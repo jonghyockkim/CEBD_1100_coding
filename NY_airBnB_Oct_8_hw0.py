@@ -7,7 +7,7 @@ for line in lines[1:]:
     clean_columns = [] # this will contain the correctly-parsed columns
     in_quote = False  
     for x in columns: # we go through the "dirty" columns of data. We will set in_quote to True when we are inside a quote
-        clean_x = x.replace('""', '') # we remove the "escaped" quotes from x
+        clean_x = x.replace('""', '').replace('\r\n', '') # we remove the "escaped" quotes and new line from x
         n_quotes = clean_x.count('"')
         if not in_quote:
             clean_columns += [ clean_x ] # we aren't in a quote, we can add the column to the clean ones
